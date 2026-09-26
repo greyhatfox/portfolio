@@ -162,13 +162,13 @@ export default function Home() {
     if (easterEggPhase === "phase1") {
       const timer = setTimeout(() => {
         setEasterEggPhase("phase2");
-      }, 2000);
+      }, 1000);
       return () => clearTimeout(timer);
     }
     if (easterEggPhase === "phase2") {
       const timer = setTimeout(() => {
         setEasterEggPhase("closing");
-      }, 2000);
+      }, 1000);
       return () => clearTimeout(timer);
     }
     if (easterEggPhase === "closing") {

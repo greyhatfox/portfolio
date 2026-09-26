@@ -305,7 +305,7 @@ export default function Home() {
           </div>
           <div className="about-main">
             <p className="about-lede">Build tools with features and <span>a purpose</span>.</p>
-            <p className="about-copy">{portfolio.bio} I care about every detail that counts : the way a system behaves, the functionality of a page, and the tiny featuress that fascinate people.</p>
+            <p className="about-copy">{portfolio.bio} I care about every detail that counts : the way a system behaves, the functionality of a page, and the tiny features that fascinate people.</p>
             <div className="services-grid">
               {portfolio.services.map((service, index) => (
                 <div className="service-item" key={service}><span>0{index + 1}</span><strong>{service}</strong><Check size={15} /></div>

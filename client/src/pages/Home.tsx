@@ -61,9 +61,9 @@ function LinkTransition({ label }: { label: string | null }) {
   );
 }
 
-function SignalOrb() {
+function SignalOrb({ onOrbClick }: { onOrbClick: () => void }) {
   return (
-    <div className="signal-orb" aria-hidden="true">
+    <div className="signal-orb">
       <svg viewBox="0 0 520 520" role="presentation">
         <defs>
           <radialGradient id="orbGlow" cx="50%" cy="50%" r="50%">
@@ -82,8 +82,10 @@ function SignalOrb() {
         <circle className="orb-ring ring-c" cx="260" cy="260" r="92" />
         <path className="orb-sweep" d="M 94 218 C 131 84, 332 35, 438 160 C 515 251, 436 395, 298 415 C 167 434, 72 347, 94 218 Z" />
         <path className="orb-sweep orb-sweep-two" d="M 153 383 C 65 283, 125 137, 240 104 C 356 71, 455 142, 450 257 C 445 383, 281 459, 153 383 Z" />
-        <circle className="orb-core" cx="260" cy="260" r="26" />
-        <circle className="orb-pulse" cx="260" cy="260" r="38" />
+        <g className="orb-core-group" onClick={onOrbClick} role="button" tabIndex={0} aria-label="Interactive signal core">
+          <circle className="orb-core" cx="260" cy="260" r="26" />
+          <circle className="orb-pulse" cx="260" cy="260" r="38" />
+        </g>
         <circle className="orb-node" cx="449" cy="157" r="5" />
         <circle className="orb-node node-two" cx="94" cy="218" r="4" />
         <path className="orb-crosshair" d="M 260 37 V 76 M 260 444 V 483 M 37 260 H 76 M 444 260 H 483" />
@@ -145,6 +147,8 @@ export default function Home() {
   });
   const [transitionLabel, setTransitionLabel] = useState<string | null>(null);
   const [activeCertificate, setActiveCertificate] = useState<(typeof portfolio.certificates)[number] | null>(null);
+  const [orbClicks, setOrbClicks] = useState(0);
+  const [easterEggPhase, setEasterEggPhase] = useState<"hidden" | "phase1" | "phase2">("hidden");
   const aboutRef = useReveal();
   const workRef = useReveal();
   const contactRef = useReveal();
@@ -153,6 +157,21 @@ export default function Home() {
     document.documentElement.classList.toggle("dark", isDark);
     localStorage.setItem("signal-theme", isDark ? "dark" : "light");
   }, [isDark]);
+
+  useEffect(() => {
+    if (easterEggPhase === "phase1") {
+      const timer = setTimeout(() => {
+        setEasterEggPhase("phase2");
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+    if (easterEggPhase === "phase2") {
+      const timer = setTimeout(() => {
+        setEasterEggPhase("hidden");
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [easterEggPhase]);
 
   useEffect(() => {
     const handlePointerMove = (event: PointerEvent) => {
@@ -165,20 +184,35 @@ export default function Home() {
 
   useEffect(() => {
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setActiveCertificate(null);
+      if (event.key === "Escape") {
+        setActiveCertificate(null);
+        setEasterEggPhase("hidden");
+      }
     };
-    document.body.style.overflow = activeCertificate ? "hidden" : "";
+    document.body.style.overflow = activeCertificate || easterEggPhase !== "hidden" ? "hidden" : "";
     window.addEventListener("keydown", closeOnEscape);
     return () => {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", closeOnEscape);
     };
-  }, [activeCertificate]);
+  }, [activeCertificate, easterEggPhase]);
 
   const toggleTheme = () => setIsDark((current) => !current);
   const handleExternalLink = (label: string) => {
     setTransitionLabel(label);
     window.setTimeout(() => setTransitionLabel(null), 650);
+  };
+
+  const handleOrbClick = () => {
+    if (easterEggPhase !== "hidden") return;
+    setOrbClicks((prev) => {
+      const next = prev + 1;
+      if (next >= 5) {
+        setEasterEggPhase("phase1");
+        return 0;
+      }
+      return next;
+    });
   };
 
   return (
@@ -214,7 +248,7 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-visual reveal is-visible" style={{ animationDelay: "120ms" }}>
-            <SignalOrb />
+            <SignalOrb onOrbClick={handleOrbClick} />
           </div>
           <div className="hero-meta">
             <span>01 / 05</span>
@@ -229,7 +263,7 @@ export default function Home() {
               <p className="section-kicker">02 / Selected work</p>
               <h2>Built for the<br /><em>people.</em></h2>
             </div>
-            <p className="section-intro">A small selection of recent.</p>
+            <p className="section-intro">A small selection of recent work!.</p>
           </div>
           <div className="project-list">
             {portfolio.projects.map((project) => (
@@ -264,7 +298,7 @@ export default function Home() {
             </div>
           </div>
           <div className="about-main">
-            <p className="about-lede">Build tools with features and<span>a purpose</span>.</p>
+            <p className="about-lede">Build tools with features and <span>a purpose</span>.</p>
             <p className="about-copy">{portfolio.bio} I care about every detail that counts : the way a system behaves, the functionality of a page, and the tiny featuress that fascinate people.</p>
             <div className="services-grid">
               {portfolio.services.map((service, index) => (
@@ -326,6 +360,21 @@ export default function Home() {
               <button className="modal-close" type="button" onClick={() => setActiveCertificate(null)} aria-label="Close certificate preview"><X size={19} /></button>
             </div>
             <iframe className="certificate-frame" src={`${activeCertificate.url}#toolbar=1&navpanes=0`} title={activeCertificate.title} />
+          </div>
+        </div>
+      )}
+      {easterEggPhase !== "hidden" && (
+        <div
+          className="easter-egg-overlay"
+          onClick={() => setEasterEggPhase("hidden")}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Secret message"
+        >
+          <div className="easter-egg-content" key={easterEggPhase}>
+            <h2 className="easter-egg-text">
+              {easterEggPhase === "phase1" ? "Getting Curious huh" : "I like that!"}
+            </h2>
           </div>
         </div>
       )}

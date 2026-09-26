@@ -28,7 +28,7 @@ export const portfolio = {
   role: "Blockchain & AI developer",
   location: "Based in India · working worldwide",
   availability: "Open to internships, collaborations & build ideas",
-  email: "irfanahmed25046@gmail.com",
+  email: "irfan.ahm.mohammad@gmail.com",
   intro: "Building digital tools\nwith a purpose.",
   bio: "I’m Mohammad Irfan Ahmed, a developer focused on making useful, accessible products with blockchain, AI, and an easiy navigatable interface design. I turn ambitious ideas into functional tools that people can actually use.",
   year: "2026",

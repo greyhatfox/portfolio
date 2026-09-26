@@ -148,7 +148,7 @@ export default function Home() {
   const [transitionLabel, setTransitionLabel] = useState<string | null>(null);
   const [activeCertificate, setActiveCertificate] = useState<(typeof portfolio.certificates)[number] | null>(null);
   const [orbClicks, setOrbClicks] = useState(0);
-  const [easterEggPhase, setEasterEggPhase] = useState<"hidden" | "phase1" | "phase2">("hidden");
+  const [easterEggPhase, setEasterEggPhase] = useState<"hidden" | "phase1" | "phase2" | "closing">("hidden");
   const aboutRef = useReveal();
   const workRef = useReveal();
   const contactRef = useReveal();
@@ -167,8 +167,14 @@ export default function Home() {
     }
     if (easterEggPhase === "phase2") {
       const timer = setTimeout(() => {
-        setEasterEggPhase("hidden");
+        setEasterEggPhase("closing");
       }, 2000);
+      return () => clearTimeout(timer);
+    }
+    if (easterEggPhase === "closing") {
+      const timer = setTimeout(() => {
+        setEasterEggPhase("hidden");
+      }, 420);
       return () => clearTimeout(timer);
     }
   }, [easterEggPhase]);
@@ -365,13 +371,13 @@ export default function Home() {
       )}
       {easterEggPhase !== "hidden" && (
         <div
-          className="easter-egg-overlay"
-          onClick={() => setEasterEggPhase("hidden")}
+          className={`easter-egg-overlay ${easterEggPhase === "closing" ? "is-closing" : ""}`}
+          onClick={() => setEasterEggPhase("closing")}
           role="dialog"
           aria-modal="true"
           aria-label="Secret message"
         >
-          <div className="easter-egg-content" key={easterEggPhase}>
+          <div className="easter-egg-content" key={easterEggPhase === "closing" ? "phase2" : easterEggPhase}>
             <h2 className="easter-egg-text">
               {easterEggPhase === "phase1" ? "Getting Curious huh" : "I like that!"}
             </h2>

@@ -308,14 +308,13 @@ export default function Home() {
               <a className="email-link" href={`mailto:${portfolio.email}`}><Mail size={19} /> {portfolio.email} <ArrowUpRight size={17} /></a>
             </div>
           </div>
+          <footer className="site-footer">
+            <span>© {portfolio.year} {portfolio.name}</span>
+            <span>Designed & built with intention.</span>
+            <a href="#top">Back to top <ArrowUpRight size={14} /></a>
+          </footer>
         </section>
       </main>
-
-      <footer className="site-footer">
-        <span>© {portfolio.year} {portfolio.name}</span>
-        <span>Designed & built with intention.</span>
-        <a href="#top">Back to top <ArrowUpRight size={14} /></a>
-      </footer>
       <LinkTransition label={transitionLabel} />
       {activeCertificate && (
         <div className="certificate-modal" role="dialog" aria-modal="true" aria-label={`${activeCertificate.title} certificate`}>

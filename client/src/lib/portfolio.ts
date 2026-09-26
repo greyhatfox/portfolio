@@ -15,6 +15,24 @@ export type Project = {
   accent: "red" | "cream" | "ink";
 };
 
+export type EducationItem = {
+  institution: string;
+  location: string;
+  degree: string;
+  description: string;
+  badge: string;
+  year: string;
+  accent: "red" | "cream" | "ink";
+};
+
+export type SkillCategory = {
+  name: string;
+  category: string;
+  description: string;
+  tags: string[];
+  wide?: boolean;
+};
+
 export type Certificate = {
   title: string;
   issuer: string;
@@ -30,7 +48,7 @@ export const portfolio = {
   availability: "Open to internships, collaborations & build ideas",
   email: "irfan.ahm.mohammad@gmail.com",
   intro: "Building digital tools\nwith a purpose.",
-  bio: "I’m Mohammad Irfan Ahmed, a developer focused on making useful, accessible products with blockchain, AI, and an easiy navigatable interface design. I turn ambitious ideas into functional tools that people can actually use.",
+  bio: "I’m Mohammad Irfan Ahmed, a developer focused on making useful, accessible products with blockchain, AI, and an easily navigatable interface design. I turn ambitious ideas into functional tools that people can actually use.",
   year: "2026",
 
   links: {
@@ -87,6 +105,70 @@ export const portfolio = {
     },
   ] satisfies Project[],
 
+  education: [
+    {
+      institution: "Vellore Institute of Technology",
+      location: "Amaravathi, Andhra Pradesh, India",
+      degree: "B.Tech — Bachelor of Technology",
+      description: "Currently pursuing B.Tech, focusing on Computer Science, Web Development, DSA, and Smart Contract engineering.",
+      badge: "PURSUING B.TECH",
+      year: "GRADUATION 2028",
+      accent: "red",
+    },
+    {
+      institution: "Narayana Junior College",
+      location: "Nellore, Andhra Pradesh, India",
+      degree: "12th Grade (Higher Secondary)",
+      description: "Studied 12th grade under the State Board of Intermediate Education and secured an overall score of 85%.",
+      badge: "85% SCORE",
+      year: "STATE BOARD",
+      accent: "cream",
+    },
+    {
+      institution: "Ithaka ENG MED School",
+      location: "Nellore, Andhra Pradesh, India",
+      degree: "10th Grade (Secondary School)",
+      description: "Completed 10th grade CBSE Examinations with an aggregate score of 92%.",
+      badge: "92% SCORE",
+      year: "CBSE BOARD",
+      accent: "ink",
+    },
+  ] satisfies EducationItem[],
+
+  skills: [
+    {
+      name: "JAVA",
+      category: "Core & OOP",
+      description: "Strong foundation in Java programming, Object-Oriented paradigm, multithreading, and data structures.",
+      tags: ["Java", "OOP", "Backend"],
+    },
+    {
+      name: "C",
+      category: "Systems & Fundamentals",
+      description: "Procedural programming, low-level memory management, pointers, and performance optimization.",
+      tags: ["C", "Memory", "Logic"],
+    },
+    {
+      name: "Solidity",
+      category: "Blockchain & Smart Contracts",
+      description: "Developing decentralized applications (dApps), Ethereum smart contracts, and Web3 ecosystem tools.",
+      tags: ["Solidity", "EVM", "Web3"],
+    },
+    {
+      name: "Web Dev",
+      category: "Full-Stack & Frontend",
+      description: "Building responsive, accessible web applications using modern HTML, CSS, JavaScript, and React.",
+      tags: ["HTML/CSS", "JS", "React"],
+    },
+    {
+      name: "DSA",
+      category: "Data Structures & Algorithms",
+      description: "Algorithmic problem solving, time & space complexity optimization, trees, graphs, and dynamic programming.",
+      tags: ["Algorithms", "Data Structures", "Optimization"],
+      wide: true,
+    },
+  ] satisfies SkillCategory[],
+
   // Add your certificates here. Replace the sample rows with your own title, issuer, year, and URL.
   certificates: [
     {
@@ -111,3 +193,4 @@ export const portfolio = {
     "Creative frontend development",
   ],
 } as const;
+

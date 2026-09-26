@@ -198,6 +198,31 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blood); outline
 .tag-row { display: flex; gap: 7px; flex-wrap: wrap; }
 .tag-row span { padding: 6px 8px; border: 1px solid var(--line); font-size: 8px; color: var(--ink-soft); }
 
+.education-section { display: flex; flex-direction: column; justify-content: center; }
+.education-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.education-card { border: 1px solid var(--line); background: var(--bg-elevated); padding: 30px; display: flex; flex-direction: column; justify-content: space-between; position: relative; transition: transform 300ms var(--ease-out), border-color 300ms ease; }
+.education-card:hover { transform: translateY(-6px); border-color: var(--blood); }
+.edu-top-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 24px; }
+.edu-badge { font: 9px/1 "Space Mono", monospace; letter-spacing: 0.06em; padding: 6px 10px; border-radius: 2px; text-transform: uppercase; }
+.badge-active { background: color-mix(in srgb, var(--blood) 20%, transparent); color: var(--blood-soft); border: 1px solid var(--blood); }
+.badge-score { background: color-mix(in srgb, var(--cream) 15%, transparent); color: var(--ink); border: 1px solid var(--line-strong); }
+.edu-year { font: 10px/1 "Space Mono", monospace; color: var(--ink-soft); text-transform: uppercase; }
+.education-card h3 { font: 400 24px/1.2 "DM Serif Display", Georgia, serif; margin: 0 0 8px; }
+.edu-location { font: 11px/1.4 "Space Mono", monospace; color: var(--ink-soft); margin: 0 0 20px; }
+.edu-body { border-top: 1px solid var(--line); padding-top: 18px; margin-top: auto; }
+.edu-degree { font: 600 14px/1.4 "DM Sans", sans-serif; color: var(--ink); margin: 0 0 8px; }
+.edu-desc { font-size: 13px; line-height: 1.6; color: var(--ink-soft); margin: 0; }
+
+.skills-section { display: flex; flex-direction: column; justify-content: center; }
+.skills-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.skill-card { border: 1px solid var(--line); background: var(--bg-elevated); padding: 28px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 300ms var(--ease-out), border-color 300ms ease; }
+.skill-card:hover { transform: translateY(-6px); border-color: var(--blood); }
+.skill-card-wide { grid-column: span 2; }
+.skill-header { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 16px; border-bottom: 1px solid var(--line); padding-bottom: 14px; }
+.skill-name { font: 400 28px/1 "DM Serif Display", Georgia, serif; color: var(--ink); }
+.skill-tag { font: 10px/1 "Space Mono", monospace; color: var(--blood); text-transform: uppercase; letter-spacing: 0.05em; }
+.skill-desc { font-size: 13px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 20px; min-height: 40px; }
+
 .about-section { display: grid; grid-template-columns: minmax(200px, .8fr) 2fr; gap: 10vw; padding: 92px 0 40px; align-content: center; }
 .about-aside { border-top: 1px solid var(--line); padding-top: 18px; }
 .about-stamp { width: 148px; height: 148px; margin: 80px auto 0; position: relative; display: grid; place-items: center; text-align: center; color: var(--blood); }

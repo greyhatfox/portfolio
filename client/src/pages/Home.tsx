@@ -149,6 +149,8 @@ export default function Home() {
   const [activeCertificate, setActiveCertificate] = useState<(typeof portfolio.certificates)[number] | null>(null);
   const [orbClicks, setOrbClicks] = useState(0);
   const [easterEggPhase, setEasterEggPhase] = useState<"hidden" | "phase1" | "phase2" | "closing">("hidden");
+  const educationRef = useReveal();
+  const skillsRef = useReveal();
   const aboutRef = useReveal();
   const workRef = useReveal();
   const contactRef = useReveal();
@@ -230,6 +232,8 @@ export default function Home() {
         </a>
         <nav className="nav-links" aria-label="Primary navigation">
           <a href="#work">Selected work</a>
+          <a href="#education">Education</a>
+          <a href="#skills">Technical Skills</a>
           <a href="#about">About</a>
           <a href="#certificates">Certificates</a>
           <a href="#contact">Contact</a>
@@ -257,7 +261,7 @@ export default function Home() {
             <SignalOrb onOrbClick={handleOrbClick} />
           </div>
           <div className="hero-meta">
-            <span>01 / 05</span>
+            <span>01 / 07</span>
             <span>Independent digital practice</span>
             <span>{portfolio.location}</span>
           </div>
@@ -291,9 +295,59 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="content-section education-section snap-section" id="education" ref={educationRef}>
+          <div className="section-heading">
+            <div>
+              <p className="section-kicker">03 / Education</p>
+              <h2>Academic<br /><em>foundation.</em></h2>
+            </div>
+            <p className="section-intro">Degrees, academic history, and test achievements shaping my technical foundation.</p>
+          </div>
+          <div className="education-grid">
+            {portfolio.education.map((edu, idx) => (
+              <div className={`education-card visual-${edu.accent}`} key={`${edu.institution}-${idx}`}>
+                <div className="edu-top-row">
+                  <span className={`edu-badge ${edu.accent === "red" ? "badge-active" : "badge-score"}`}>{edu.badge}</span>
+                  <span className="edu-year">{edu.year}</span>
+                </div>
+                <h3>{edu.institution}</h3>
+                <p className="edu-location">{edu.location}</p>
+                <div className="edu-body">
+                  <p className="edu-degree">{edu.degree}</p>
+                  <p className="edu-desc">{edu.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="content-section skills-section snap-section" id="skills" ref={skillsRef}>
+          <div className="section-heading">
+            <div>
+              <p className="section-kicker">04 / Technical Skills</p>
+              <h2>Toolkit &<br /><em>expertise.</em></h2>
+            </div>
+            <p className="section-intro">Core languages, algorithms, smart contracts, and web development technologies I build with.</p>
+          </div>
+          <div className="skills-grid">
+            {portfolio.skills.map((skill) => (
+              <div className={`skill-card ${skill.wide ? "skill-card-wide" : ""}`} key={skill.name}>
+                <div className="skill-header">
+                  <span className="skill-name">{skill.name}</span>
+                  <span className="skill-tag">{skill.category}</span>
+                </div>
+                <p className="skill-desc">{skill.description}</p>
+                <div className="tag-row">
+                  {skill.tags.map((tag) => <span key={tag}>{tag}</span>)}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section className="content-section about-section snap-section" id="about" ref={aboutRef}>
           <div className="about-aside">
-            <p className="section-kicker">03 / About</p>
+            <p className="section-kicker">05 / About</p>
             <div className="about-stamp">
               <svg viewBox="0 0 160 160" aria-hidden="true">
                 <circle cx="80" cy="80" r="61" />
@@ -321,7 +375,7 @@ export default function Home() {
         <section className="content-section certificates-section snap-section" id="certificates">
           <div className="section-heading certificate-heading">
             <div>
-              <p className="section-kicker">04 / Certifications</p>
+              <p className="section-kicker">06 / Certifications</p>
               <h2>Proof of<br /><em>practice.</em></h2>
             </div>
             <p className="section-intro">A growing archive of learning milestones.</p>
@@ -340,7 +394,7 @@ export default function Home() {
         <section className="contact-section snap-section" id="contact" ref={contactRef}>
           <div className="contact-grid">
             <div>
-              <p className="section-kicker">05 / Contact</p>
+              <p className="section-kicker">07 / Contact</p>
               <h2>Contact Me!</h2>
             </div>
             <div className="contact-copy">

@@ -92,7 +92,7 @@ export const portfolio = {
     {
       title: "Hashgraph Developer",
       issuer: "The Hashgraph Association",
-      year: "2025",
+      year: "2026",
       url: "/certificates/hashgraph-developer.pdf",
     },
 

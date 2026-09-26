@@ -29,8 +29,8 @@ export const portfolio = {
   location: "Based in India · working worldwide",
   availability: "Open to internships, collaborations & build ideas",
   email: "irfanahmed25046@gmail.com",
-  intro: "I build digital tools\nwith a purpose.",
-  bio: "I’m Mohammad Irfan Ahmed, a developer focused on making useful, accessible products with blockchain, AI, and thoughtful interface design. I enjoy turning ambitious ideas into clear tools people can actually use.",
+  intro: "Building digital tools\nwith a purpose.",
+  bio: "I’m Mohammad Irfan Ahmed, a developer focused on making useful, accessible products with blockchain, AI, and an easiy navigatable interface design. I turn ambitious ideas into functional tools that people can actually use.",
   year: "2026",
 
   links: {
@@ -43,13 +43,13 @@ export const portfolio = {
   projects: [
     {
       number: "01",
-      title: "Vote The Vote",
+      title: "Voting System",
       description: "A blockchain-based voting application designed around transparent, tamper-resistant participation.",
       type: "Blockchain application",
       year: "2026",
       tags: ["Blockchain", "Voting", "Web app"],
       url: "https://votethevotegng.netlify.app/",
-      thumbnail: "", // Add a thumbnail here, e.g. "/thumbnails/vote-the-vote.png".
+      thumbnail: "thumbnails/vote.png", // Add a thumbnail here, e.g. "/thumbnails/vote-the-vote.png".
       accent: "red",
     },
     {
@@ -59,8 +59,8 @@ export const portfolio = {
       type: "Blockchain application",
       year: "2026",
       tags: ["Blockchain", "Donations", "Transparency"],
-      url: "https://donationsystem.netlify.app/",
-      thumbnail: "", // Add a thumbnail here, e.g. "/thumbnails/donation-system.png".
+      url: "https://testdon.netlify.app/",
+      thumbnail: "thumbnails/donation.png", // Add a thumbnail here, e.g. "/thumbnails/donation-system.png".
       accent: "cream",
     },
     {
@@ -71,7 +71,7 @@ export const portfolio = {
       year: "2026",
       tags: ["AI", "Education", "Product design"],
       url: "https://studykorner.netlify.app/",
-      thumbnail: "", // Add a thumbnail here, e.g. "/thumbnails/studykorner.png".
+      thumbnail: "thumbnails/study.png", // Add a thumbnail here, e.g. "/thumbnails/studykorner.png".
       accent: "ink",
     },
     {
@@ -82,7 +82,7 @@ export const portfolio = {
       year: "2026",
       tags: ["CGPA", "Planner", "Utilities"],
       url: "https://student-planner-tools.netlify.app/",
-      thumbnail: "", // Add a thumbnail here, e.g. "/thumbnails/student-tools.png".
+      thumbnail: "thumbnails/tools.png", // Add a thumbnail here, e.g. "/thumbnails/student-tools.png".
       accent: "cream",
     },
   ] satisfies Project[],
@@ -90,10 +90,17 @@ export const portfolio = {
   // Add your certificates here. Replace the sample rows with your own title, issuer, year, and URL.
   certificates: [
     {
-      title: "Your certificate title",
-      issuer: "Issuing organization",
-      year: "20XX",
-      url: "https://example.com/your-certificate",
+      title: "Hashgraph Developer",
+      issuer: "The Hashgraph Association",
+      year: "2025",
+      url: "/certificates/hashgraph-developer.pdf",
+    },
+
+    {
+      title: "MATLAB Onramp",
+      issuer: "MathWorks Training Services",
+      year: "2024",
+      url: "/certificates/matlab-onramp.pdf",
     },
   ] satisfies Certificate[],
 

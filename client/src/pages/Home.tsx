@@ -89,7 +89,7 @@ function SignalOrb() {
         <path className="orb-crosshair" d="M 260 37 V 76 M 260 444 V 483 M 37 260 H 76 M 444 260 H 483" />
       </svg>
       <span className="orb-label orb-label-top">SCROLL TO EXPLORE</span>
-      <span className="orb-label orb-label-bottom">BANGALORE / 12.9716° N</span>
+      <span className="orb-label orb-label-bottom">BE CURIOUS</span>
     </div>
   );
 }
@@ -227,9 +227,9 @@ export default function Home() {
           <div className="section-heading">
             <div>
               <p className="section-kicker">02 / Selected work</p>
-              <h2>Built for the<br /><em>long signal.</em></h2>
+              <h2>Built for the<br /><em>people.</em></h2>
             </div>
-            <p className="section-intro">A small selection of recent work across products, systems, and digital spaces.</p>
+            <p className="section-intro">A small selection of recent.</p>
           </div>
           <div className="project-list">
             {portfolio.projects.map((project) => (
@@ -260,12 +260,12 @@ export default function Home() {
                 <path d="M 80 19 V 34 M 80 126 V 141 M 19 80 H 34 M 126 80 H 141" />
                 <circle cx="80" cy="80" r="11" />
               </svg>
-              <span>Think clearly<br />make boldly</span>
+              <span></span>
             </div>
           </div>
           <div className="about-main">
-            <p className="about-lede">The best digital work makes a complex thing feel <span>obvious</span>.</p>
-            <p className="about-copy">{portfolio.bio} I care about the details that earn trust: the way a system behaves, the rhythm of a page, and the little moments that make people want to come back.</p>
+            <p className="about-lede">Build tools with features and<span>a purpose</span>.</p>
+            <p className="about-copy">{portfolio.bio} I care about every detail that counts : the way a system behaves, the functionality of a page, and the tiny featuress that fascinate people.</p>
             <div className="services-grid">
               {portfolio.services.map((service, index) => (
                 <div className="service-item" key={service}><span>0{index + 1}</span><strong>{service}</strong><Check size={15} /></div>
@@ -284,7 +284,7 @@ export default function Home() {
               <p className="section-kicker">04 / Certifications</p>
               <h2>Proof of<br /><em>practice.</em></h2>
             </div>
-            <p className="section-intro">A growing archive of learning milestones. Add your certificates in the portfolio data file.</p>
+            <p className="section-intro">A growing archive of learning milestones.</p>
           </div>
           <div className="certificate-list">
             {portfolio.certificates.map((certificate, index) => (
@@ -301,7 +301,7 @@ export default function Home() {
           <div className="contact-grid">
             <div>
               <p className="section-kicker">05 / Contact</p>
-              <h2>Have a good<br /><em>signal?</em></h2>
+              <h2>Contact Me!</h2>
             </div>
             <div className="contact-copy">
               <p>Tell me what you&apos;re building, where you&apos;re stuck, or what you&apos;re curious about. I&apos;ll get back to you soon.</p>
